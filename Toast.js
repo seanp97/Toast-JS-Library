@@ -1,9 +1,24 @@
 class Toast {
 
     CloseToast() {
-        document.querySelector('.toast span').addEventListener('click', () => {
-            document.querySelector('.toast span').parentElement.remove();
+        this._allToasts = document.querySelectorAll('.toast span');
+        this._allToasts.forEach(el => {
+           el.addEventListener('click', () => {
+                el.parentElement.remove();
+                this.ToastOverlap();
+           });
         });
+    }
+
+    ToastOverlap() {
+        this._toastLength = document.querySelectorAll('.toast').length;
+        if(this._toastLength > 1) {
+            this._topStart = 90;
+            for(let i = 1; i < this._toastLength; i++) {
+                document.querySelector(`.toast:nth-of-type(${i + 1})`).style.top = `${this._topStart}px`;
+                this._topStart += 115;
+            }
+        }
     }
 
     Success(text, timeout = 5000) {
@@ -18,14 +33,22 @@ class Toast {
         `;
 
         setTimeout(() => {
-            document.querySelector('.toast-success').classList.add('slide-out');
+            this._toastAll = document.querySelectorAll('.toast-success');
+            this._toastAll.forEach(toastEl => {
+                toastEl.classList.add('slide-out');
+            });
+
         }, this._timeoutSuccess);
 
         setTimeout(() => {
-            document.querySelector('.toast-success').remove();
+            this._toastAllRem = document.querySelectorAll('.toast-success');
+            this._toastAllRem.forEach(remEl => {
+                remEl.remove();
+            });
         }, this._timeoutSuccess + 900);
 
         this.CloseToast();
+        this.ToastOverlap();
     }
 
     Error(text, timeout = 5000) {
@@ -40,14 +63,22 @@ class Toast {
         `;
 
         setTimeout(() => {
-            document.querySelector('.toast-error').classList.add('slide-out');
+            this._toastAll = document.querySelectorAll('.toast-error');
+            this._toastAll.forEach(toastEl => {
+                toastEl.classList.add('slide-out');
+            });
+
         }, this._timeoutError);
 
         setTimeout(() => {
-            document.querySelector('.toast-error').remove();
+            this._toastAllRem = document.querySelectorAll('.toast-error');
+            this._toastAllRem.forEach(remEl => {
+                remEl.remove();
+            });
         }, this._timeoutError + 900);
 
         this.CloseToast();
+        this.ToastOverlap();
     }
 
     Danger(text, timeout = 5000) {
@@ -62,14 +93,22 @@ class Toast {
         `;
 
         setTimeout(() => {
-            document.querySelector('.toast-danger').classList.add('slide-out');
+            this._toastAll = document.querySelectorAll('.toast-danger');
+            this._toastAll.forEach(toastEl => {
+                toastEl.classList.add('slide-out');
+            });
+
         }, this._timeoutDanger);
 
         setTimeout(() => {
-            document.querySelector('.toast-danger').remove();
+            this._toastAllRem = document.querySelectorAll('.toast-danger');
+            this._toastAllRem.forEach(remEl => {
+                remEl.remove();
+            });
         }, this._timeoutDanger + 900);
 
         this.CloseToast();
+        this.ToastOverlap();
     }
 
     Info(text, timeout = 5000) {
@@ -84,14 +123,22 @@ class Toast {
         `;
 
         setTimeout(() => {
-            document.querySelector('.toast-info').classList.add('slide-out');
+            this._toastAll = document.querySelectorAll('.toast-info');
+            this._toastAll.forEach(toastEl => {
+                toastEl.classList.add('slide-out');
+            });
+
         }, this._timeoutInfo);
 
         setTimeout(() => {
-            document.querySelector('.toast-info').remove();
+            this._toastAllRem = document.querySelectorAll('.toast-info');
+            this._toastAllRem.forEach(remEl => {
+                remEl.remove();
+            });
         }, this._timeoutInfo + 900);
 
         this.CloseToast();
+        this.ToastOverlap();
     }
 
 }
