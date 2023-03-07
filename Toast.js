@@ -15,8 +15,9 @@ class Toast {
         if(this._toastLength > 1) {
             this._topStart = 90;
             for(let i = 1; i < this._toastLength; i++) {
-                document.querySelector(`.toast:nth-of-type(${i + 1})`).style.top = `${this._topStart}px`;
-                this._topStart += 115;
+                document.querySelector(`.toast:nth-of-type(${i})`).style.top = `${this._topStart}px`;
+                this._offsetHeight = document.querySelector(`.toast:nth-of-type(${i})`).offsetHeight;
+                this._topStart += this._offsetHeight + 15;
             }
         }
     }
