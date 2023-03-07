@@ -33,8 +33,8 @@ t.Info('A Info Message');
 
 
 
-We can also pass in a argument to change how long the toast box displays for - 
+We can also pass in a argument to change how long the toast box displays for
 
 t.Success('A Success Message', 3000);
 
-This will then hide the box after 3 seconds. Please not if no argument is passed, it will default to 5 second (5000ms)
+This will then hide the box after 3 seconds. Please not if no argument is passed, it will default to 5 seconds (5000ms)
