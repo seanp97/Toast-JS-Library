@@ -13,12 +13,15 @@ class Toast {
     ToastOverlap() {
         this._toastLength = document.querySelectorAll('.toast').length;
         if(this._toastLength > 1) {
-            this._topStart = 90;
-            for(let i = 1; i < this._toastLength; i++) {
+            this._topStart = 20;
+            for(let i = 1; i < this._toastLength + 1; i++) {
                 document.querySelector(`.toast:nth-of-type(${i})`).style.top = `${this._topStart}px`;
                 this._offsetHeight = document.querySelector(`.toast:nth-of-type(${i})`).offsetHeight;
                 this._topStart += this._offsetHeight + 15;
             }
+        }
+        else if(this._toastLength == 1) {
+            document.querySelector('.toast').style.top = '20px';
         }
     }
 
@@ -36,7 +39,7 @@ class Toast {
         setTimeout(() => {
             this._toastAll = document.querySelectorAll('.toast-success');
             this._toastAll.forEach(toastEl => {
-                toastEl.classList.add('slide-out');
+                toastEl.classList.add('fade-out');
             });
 
         }, this._timeoutSuccess);
@@ -66,7 +69,7 @@ class Toast {
         setTimeout(() => {
             this._toastAll = document.querySelectorAll('.toast-error');
             this._toastAll.forEach(toastEl => {
-                toastEl.classList.add('slide-out');
+                toastEl.classList.add('fade-out');
             });
 
         }, this._timeoutError);
@@ -96,7 +99,7 @@ class Toast {
         setTimeout(() => {
             this._toastAll = document.querySelectorAll('.toast-danger');
             this._toastAll.forEach(toastEl => {
-                toastEl.classList.add('slide-out');
+                toastEl.classList.add('fade-out');
             });
 
         }, this._timeoutDanger);
@@ -126,7 +129,7 @@ class Toast {
         setTimeout(() => {
             this._toastAll = document.querySelectorAll('.toast-info');
             this._toastAll.forEach(toastEl => {
-                toastEl.classList.add('slide-out');
+                toastEl.classList.add('fade-out');
             });
 
         }, this._timeoutInfo);
