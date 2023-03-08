@@ -1,20 +1,20 @@
-@keyframes slideIn {
+@keyframes FadeIn {
     0% { 
-        transform: translateX(400px);
+        opacity: 0;
     }
 
     100% { 
-        transform: translateX(0px);
+        opacity: 1;
     }
 }
 
-@keyframes slideOut {
+@keyframes FadeOut {
     0% { 
-        transform: translateX(0px);
+        opacity: 1;
     }
 
     100% { 
-        transform: translateX(400px);
+        opacity: 0;
     }
 }
 
@@ -24,8 +24,9 @@
     right: 25px;
     padding: 15px 50px 15px 25px;
     border-radius: 10px;
-    animation: slideIn 0.8s forwards;
+    animation: FadeIn 2s forwards;
     max-width: max(250px, 10vw);
+    max-height: 250px;
 }
 
 .toast span {
@@ -43,8 +44,8 @@
     overflow: hidden;
 }
 
-.toast.slide-out {
-    animation: slideOut 0.8s forwards;
+.toast.fade-out {
+    animation: FadeOut 1s forwards;
 }
 
 .toast.toast-success {
